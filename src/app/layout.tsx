@@ -5,6 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { Roboto } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme';
+import { Container, Paper } from "@mui/material";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -41,7 +42,9 @@ export default function RootLayout({
       >
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            {children}
+            <Container className="min-h-screen min-w-full bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950"> 
+              {children}
+            </Container>            
           </ThemeProvider>          
         </AppRouterCacheProvider>        
       </body>

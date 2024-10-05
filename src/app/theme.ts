@@ -11,11 +11,14 @@ const theme = createTheme({
     cssVariables: true,
     palette: {
         mode: 'dark',
-        violet: {
+        primary: {
             main: violetBase,
             light: alpha(violetBase, 0.5),
             dark: alpha(violetBase, 0.9),
             contrastText: getContrastRatio(violetMain, '#fff') > 4.5 ? '#fff' : '#111',
+        },
+        white: {
+            main: '#fff'
         }
     }
 });

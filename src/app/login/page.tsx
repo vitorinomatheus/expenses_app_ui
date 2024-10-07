@@ -2,7 +2,7 @@
 
 import { TextField, Button, Link, Typography, Container } from "@mui/material"
 import useMediaQuery from "@mui/material/useMediaQuery";
-import AppButton from "../components/buttons/app_button";
+import AppButton from "../components/buttons/appButton";
 
 
 export default function Login(props: any) {

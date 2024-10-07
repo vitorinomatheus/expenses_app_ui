@@ -2,7 +2,7 @@
 
 import { useMediaQuery } from "@mui/material"
 import { TextField, Button, Link, Typography, Container } from "@mui/material"
-import AppButton from "../components/buttons/app_button"
+import AppButton from "../components/buttons/appButton"
 
 export default function CreateUser(props: any) {
     let isMobile = useMediaQuery('(max-width:600px)')

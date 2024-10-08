@@ -1,4 +1,4 @@
-import { GridColDef } from "@mui/x-data-grid";
+import { GridColDef, GridColumnVisibilityModel } from "@mui/x-data-grid";
 import DataGridModel from "./dataGridModel";
 
 export default class Expense implements DataGridModel{
@@ -16,6 +16,21 @@ export default class Expense implements DataGridModel{
         public dayOfWeek: number,
         public monthWeek: number
     ) { }
+
+    GetMobileHiddenColumns(): GridColumnVisibilityModel {
+        let model = {
+            catBudgetImpact: false,
+            catExpense: false,
+            catSocial: false,
+            catExpenseFeel: false,
+            dayOfWeek: false,
+            monthWeek: false,
+            catEmotional: false,
+            id: false
+        } as GridColumnVisibilityModel
+
+        return model
+    }
     
     GetGridColumns(): GridColDef[] {
         return [
@@ -33,52 +48,52 @@ export default class Expense implements DataGridModel{
             {
                 field: 'catExpense',
                 headerName: 'Tipo de gasto',
-                width: 200,
+                width: 150,
                 type: 'number'
             },
             {
                 field: 'catEmotional',
                 headerName: 'Emoção',
-                width: 200,
+                width: 150,
                 type: 'number'
             },
             {
                 field: 'catSocial',
                 headerName: 'Social',
-                width: 200,
+                width: 150,
                 type: 'number'
             },
             {
                 field: 'catExpenseFeel',
                 headerName: 'Rel. c/ gasto',
-                width: 200,
+                width: 150,
                 type: 'number'
             },
             {
                 field: 'catBudgetImpact',
-                headerName: 'Impacto no orçamento',
-                width: 200,
+                headerName: 'Impacto',
+                width: 150,
                 type: 'number'
             },
-            // {
-            //   field: 'date',
-            //   headerName: 'Date',
-            //   width: 130,
-            //   type: 'date',
-            //   valueFormatter: (params) => {
-            //     return new Date(params.value).toLocaleDateString()
-            //   }
-            // },
+            {
+              field: 'date',
+              headerName: 'Date',
+              width: 150,
+              type: 'date',
+              valueFormatter: (params) => {
+                return new Date(params).toLocaleDateString()
+              }
+            },
             {
                 field: 'dayOfWeek',
                 headerName: 'Dia da semana',
-                width: 200,
+                width: 150,
                 type: 'number'
             },
             {
                 field: 'monthWeek',
                 headerName: 'Semana do mês',
-                width: 200,
+                width: 150,
                 type: 'number'
             }
         ]

@@ -1,32 +1,41 @@
-import { GridColDef } from "@mui/x-data-grid"
+import { GridColDef, GridColumnVisibilityModel } from "@mui/x-data-grid"
 import DataGridModel from "../dataGridModel"
 
 export default class CategoriesBase implements DataGridModel {
     id?: number
-    userId?: boolean
+    userId?: number
 
     constructor(
         public name: string,
-        public custom: string
+        public custom: boolean
     ) { }
+
+    GetMobileHiddenColumns(): GridColumnVisibilityModel {
+        let model = {
+            custom: false,
+            id: false
+        } as GridColumnVisibilityModel
+
+        return model
+    }
 
     GetGridColumns(): GridColDef[] {
         return [
             {
                 field: 'id',
                 headerName: 'ID',
-                width: 90
+                width: 120
             },
             {
                 field: 'name',
                 headerName: 'Nome',
-                width: 130,
+                width: 300,
                 type: 'string'
             },
             {
                 field: 'custom',
-                headerName: 'Categoria pessoal',
-                width: 50,
+                headerName: 'Personalizado',
+                width: 150,
                 type: 'boolean'
             }
         ]

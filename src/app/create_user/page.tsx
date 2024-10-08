@@ -5,7 +5,7 @@ import { TextField, Button, Link, Typography, Container } from "@mui/material"
 import AppButton from "../components/buttons/appButton"
 
 export default function CreateUser(props: any) {
-    let isMobile = useMediaQuery('(max-width:600px)')
+    let isMobile = useMediaQuery('(max-width:770px)')
 
     return(
         <Container className="min-h-screen min-w-full  flex items-center">

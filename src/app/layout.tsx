@@ -5,7 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { Roboto } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme';
-import { Container, Paper } from "@mui/material";
+import { Box, Container, Paper } from "@mui/material";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -36,15 +36,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
       >
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <Container className="min-h-screen min-w-full bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950"> 
+            <Box className="min-h-screen min-w-screen bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950"> 
               {children}
-            </Container>            
+            </Box>            
           </ThemeProvider>          
         </AppRouterCacheProvider>        
       </body>

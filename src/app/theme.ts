@@ -5,6 +5,16 @@ const violetBase = '#5a00b5';
 const violetMain = alpha(violetBase, 0.7);
 
 const theme = createTheme({
+    components: {
+        MuiDrawer: {
+          styleOverrides: {
+            paper: {
+              backgroundColor: "rgba(0, 0, 0, 0.8)",
+              width: '60%'
+            }
+          }
+        }
+      },
     typography: {
         fontFamily: 'var(--font-roboto)',
     },

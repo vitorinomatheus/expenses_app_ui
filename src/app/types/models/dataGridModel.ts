@@ -1,6 +1,7 @@
-import { GridColDef } from "@mui/x-data-grid";
+import { GridColDef, GridColumnVisibilityModel } from "@mui/x-data-grid";
 
 export default interface DataGridModel {
 
     GetGridColumns(): GridColDef[]
+    GetMobileHiddenColumns(): GridColumnVisibilityModel
 }

@@ -15,7 +15,7 @@ export default function Layout({children}: any) {
                         <AddIcon /> 
                     </Fab> 
                     :
-                    <div onClick={console.log('hello')} style={{width: '25%', marginTop: '3rem'}}>
+                    <div style={{width: '25%', marginTop: '3rem'}}>
                         <AppButton primary={false} text="Adicionar categoria"/>
                     </div>          
                 }                

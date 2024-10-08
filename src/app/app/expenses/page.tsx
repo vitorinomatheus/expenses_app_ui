@@ -21,7 +21,7 @@ export default function ExpenseGrid(props: any) {
         {isMobile ? 
           <Fab color="primary" aria-label="add" sx={{ position: 'absolute', bottom: '0.5rem', right: '1rem'}}>  <AddIcon /> </Fab> 
           :
-          <div onClick={console.log('hello')} style={{width: '25%', marginTop: '3rem'}}>
+          <div style={{width: '25%', marginTop: '3rem'}}>
               <AppButton primary={false} text="Adicionar categoria"/>
           </div>    
         }

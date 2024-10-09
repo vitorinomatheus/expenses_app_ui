@@ -2,18 +2,22 @@
 
 import { Box, Container, Paper, Typography, useMediaQuery } from "@mui/material";
 import AppNavBar from "../components/navBar/appNavBar";
-import AppButton from "../components/buttons/appButton";
+import { LayoutProps } from "../../../.next/types/app/layout";
+import { usePageContext } from "../contexts/pageContext";
 
-export default function Layout({children}: any) {
+export default function Layout({children}: LayoutProps) {
     let isMobile = useMediaQuery('(max-width:770px)');
+    const { pageName } = usePageContext()
     
     return (
-        <Box className={isMobile ? "flex flex-col" : "flex"} sx={{height: 'calc(100vh - 3rem)'}}>
-            <AppNavBar></AppNavBar>            
-            <Container className="h-full">
-                <main className="h-full">{children}</main>
-            </Container>
+        <Box className={isMobile ? "flex flex-col" : "flex"} sx={{ height: '100vh' }}>
+            <AppNavBar></AppNavBar>  
+            <div style={{ width: '100%', height: '100vh'}}>                
+                <Container>
+                    {!isMobile ? <Typography variant="h4">{ pageName }</Typography> : null }
+                    <main className="h-full">{children}</main>
+                </Container>
+            </div>
         </Box>
-
     )
 }

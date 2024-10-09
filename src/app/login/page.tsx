@@ -11,7 +11,7 @@ export default function Login(props: any) {
     return (
         <Container className="min-h-screen min-w-full flex items-center">
             <Container className="flex items-center justify-center flex-col" maxWidth="sm">
-                <Typography variant={isMobile ? 'h3' : 'h2'} >MeusGastos</Typography>
+                <Typography variant={isMobile ? 'h3' : 'h2'} >MinhasDespesas</Typography>
                 <TextField variant="filled" label="Email" type="email" margin="normal" fullWidth/>
                 <TextField variant="filled" label="Senha" type="password" margin="normal" fullWidth/>
 

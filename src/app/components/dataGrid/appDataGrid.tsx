@@ -24,7 +24,7 @@ export default function AppDataGrid<T extends GridValidRowModel>(props: AppDataG
                 }}
                 columnVisibilityModel={isMobile ? hiddenColumns : {}}
                 pageSizeOptions={[5, 10]}
-                sx={{ width: '100%', height: 'calc(100% - 15rem)', marginTop: '1rem' }}
+                sx={{ width: '100%', height: 'calc(100vh - 15rem)', marginTop: '1rem' }}
             />
     )
 }

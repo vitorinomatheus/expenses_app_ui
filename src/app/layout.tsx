@@ -6,6 +6,7 @@ import { Roboto } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme';
 import { Box, Container, Paper } from "@mui/material";
+import { PageProvider } from "./contexts/pageContext";
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -42,9 +43,11 @@ export default function RootLayout({
       >
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <Box className="min-h-screen min-w-screen bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950"> 
-              {children}
-            </Box>            
+            <PageProvider>
+              <Box className="h-screen w-screen bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950 "> 
+                {children}
+              </Box> 
+            </PageProvider>           
           </ThemeProvider>          
         </AppRouterCacheProvider>        
       </body>

@@ -47,7 +47,7 @@ export default class Expense implements DataGridModel{
             },
             {
                 field: 'catExpense',
-                headerName: 'Tipo de gasto',
+                headerName: 'Tipo de despesa',
                 width: 150,
                 type: 'number'
             },
@@ -65,7 +65,7 @@ export default class Expense implements DataGridModel{
             },
             {
                 field: 'catExpenseFeel',
-                headerName: 'Rel. c/ gasto',
+                headerName: 'Rel. c/ despesa',
                 width: 150,
                 type: 'number'
             },

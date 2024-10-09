@@ -1,18 +1,27 @@
 'use client'
 
 import AppButton from "@/app/components/buttons/appButton";
-import { Fab, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Layout({children}: any) {
     let isMobile = useMediaQuery('(max-width:770px)')
+    const router = useRouter()
+    const pathname = usePathname()
+
+    let hideButton = pathname.includes('/form') 
+
+    const handleClick = () => {
+        router.push(`${pathname}/form`)
+      }
     
     return (
         <>
             <main className="h-full">    
-                {isMobile ? 
+                {isMobile || hideButton ? 
                     null
                     :
-                    <div style={{width: '25%', marginTop: '3rem'}}>
+                    <div style={{width: '25%', marginTop: '3rem'}} onClick={() => handleClick()}>
                         <AppButton primary={false} text="Adicionar categoria"/>
                     </div>          
                 }                

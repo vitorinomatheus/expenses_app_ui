@@ -2,8 +2,9 @@
 
 import * as React from 'react'
 import AppButton from "@/app/components/buttons/appButton"
-import { useMediaQuery, Typography, TextField, Container } from "@mui/material"
+import { useMediaQuery, Typography, TextField, Container, Box } from "@mui/material"
 import { useRouter } from 'next/navigation'
+import { usePageContext } from '@/app/contexts/pageContext'
 
 export default function User(prop: any) {
     let isMobile = useMediaQuery('(max-width:770px)')
@@ -12,10 +13,13 @@ export default function User(prop: any) {
     const [editing, SetEditing] = React.useState(false);
     const handleEditingState = (toggle: boolean) => { SetEditing(toggle) }
 
+    const { setPageName } = usePageContext()
+
+    React.useEffect(() => { setPageName('MEUS DADOS') }, [setPageName])
+
     return(
-        <Container className="min-h-screen min-w-full  flex items-center">
-            <Container className="flex items-center justify-center flex-col" maxWidth="sm">
-                <Typography variant={isMobile ? 'h3' : 'h2'} >Meus dados</Typography>
+
+            <Box className="flex flex-col" maxWidth="sm">
                 <TextField variant="filled" label="Nome" type="text" margin="normal" disabled={!editing} fullWidth/>
                 <TextField variant="filled" label="Sobrenome" type="text" margin="normal" disabled={!editing} fullWidth/>
                 <TextField variant="filled" label="Email" type="email" margin="normal" disabled={!editing} fullWidth/>
@@ -41,7 +45,6 @@ export default function User(prop: any) {
                             <div onClick={() => handleEditingState(false)} style={{width: '100%'}}><AppButton primary={false} text="Voltar" /></div>
                         </div>
                     </>}                
-            </Container>
-        </Container>
+            </Box>
     )
 }

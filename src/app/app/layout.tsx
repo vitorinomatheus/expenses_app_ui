@@ -10,9 +10,9 @@ export default function Layout({children}: LayoutProps) {
     const { pageName } = usePageContext()
     
     return (
-        <Box className={isMobile ? "flex flex-col" : "flex"} sx={{ height: '100vh' }}>
+        <Box className={isMobile ? "flex flex-col" : "flex"}>
             <AppNavBar></AppNavBar>  
-            <div style={{ width: '100%', height: '100vh'}}>                
+            <div style={{ width: '100%', height: '100vh', paddingTop: '2rem'}}>                
                 <Container>
                     {!isMobile ? <Typography variant="h4">{ pageName }</Typography> : null }
                     <main className="h-full">{children}</main>

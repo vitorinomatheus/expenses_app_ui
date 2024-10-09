@@ -1,19 +1,10 @@
 'use client'
 
-
 import { createContext, useContext, ReactNode, useState } from 'react';
-
-interface PageContextType {
-  pageName: string;
-  setPageName: (name: string) => void;
-}
+import PageProviderProps from '../types/componentsType/pageProviderProps';
+import PageContextType from '../types/componentsType/pageContextType';
 
 const PageContext = createContext<PageContextType | undefined>(undefined);
-
-interface PageProviderProps {
-  children: ReactNode;
-  initialPageName?: string;
-}
 
 export function PageProvider({ children, initialPageName = 'INÍCIO' }: PageProviderProps) {
   const [pageName, setPageName] = useState(initialPageName);

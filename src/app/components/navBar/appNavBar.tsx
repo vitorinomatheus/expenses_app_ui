@@ -4,7 +4,7 @@ import { Box, Divider, Drawer, Fab, Stack, Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu"
 import * as React from 'react';
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import VerticalBarProps from "@/app/types/componentsType/verticalBarProps";
 import { usePageContext } from "@/app/contexts/pageContext";
 import AddIcon from '@mui/icons-material/Add'
@@ -14,7 +14,15 @@ export default function AppNavBar(props: any) {
     const [open, setOpen] = React.useState(false);    
     const handleDrawerClose = () => { setOpen(false); };    
     const handleDrawerOpen = () => { setOpen(true); };
-    const { pageName } = usePageContext()
+    const { pageName } = usePageContext();
+    let pathname = usePathname();
+    const router = useRouter();
+
+    let hideAddButton = pathname.includes('/form') 
+
+    const handleClick = () => {
+        router.push(`${pathname}/form`)
+      }
 
     return (
         <>
@@ -26,12 +34,17 @@ export default function AppNavBar(props: any) {
             {
                 isMobile ? (
                     <>
-                        <div className="ml-6 mr-6 flex gap-5 items-center justify-between" style={{ width: '100%' }}>
+                        <div className={hideAddButton ? "ml-6 mr-6 flex gap-5 items-center gap-2" : "ml-6 mr-6 flex gap-5 items-center justify-between"} style={{ width: '100%' }}>
                             <MenuIcon onClick={handleDrawerOpen}/>                    
                             <Typography variant="h6">{pageName}</Typography>
-                            <Fab color="primary" aria-label="add" size="small" style={{ alignSelf: 'flex-end' }}>  
-                                <AddIcon /> 
-                            </Fab> 
+                            { hideAddButton ? 
+                                null 
+                                : 
+                                <Fab color="primary" aria-label="add" size="small" style={{ alignSelf: 'flex-end' }} onClick={() => handleClick()}>  
+                                    <AddIcon /> 
+                                </Fab>
+                            }
+ 
                         </div>  
 
                         <Drawer open={open} onClose={handleDrawerClose} PaperProps={{ width: '60%' }}>

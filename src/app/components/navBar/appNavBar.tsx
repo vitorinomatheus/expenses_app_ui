@@ -35,7 +35,7 @@ export default function AppNavBar(props: any) {
             {
                 isMobile ? (
                     <>
-                        <div className={hideAddButton ? "ml-6 mr-6 flex gap-5 items-center gap-2" : "ml-6 mr-6 flex gap-5 items-center justify-between"} style={{ width: '100%' }}>
+                        <div className={hideAddButton ? "ml-6 mr-6 flex gap-5 items-center" : "ml-6 mr-6 flex gap-5 items-center justify-between"} style={{ width: '100%' }}>
                             <MenuIcon onClick={handleDrawerOpen}/>                    
                             <Typography variant="h6">{pageName}</Typography>
                             { hideAddButton ? 

@@ -5,12 +5,13 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu"
 import * as React from 'react';
 import { usePathname, useRouter } from "next/navigation";
-import VerticalBarProps from "@/app/types/componentsType/verticalBarProps";
+import VerticalBarProps from "@/app/types/componentsProps/verticalBarProps";
 import { usePageContext } from "@/app/contexts/pageContext";
 import AddIcon from '@mui/icons-material/Add'
+import { APPNAME, MOBILE_MEDIA_QUERY } from "@/app/appConstants";
 
 export default function AppNavBar(props: any) {
-    let isMobile = useMediaQuery('(max-width:770px)');
+    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
     const [open, setOpen] = React.useState(false);    
     const handleDrawerClose = () => { setOpen(false); };    
     const handleDrawerOpen = () => { setOpen(true); };
@@ -29,7 +30,7 @@ export default function AppNavBar(props: any) {
             <Box
                 className={isMobile 
                 ? "flex items-center min-w-screen h-16 bg-opacity-55 bg-black" 
-                : "h-screen lg:w-60 md:w-48 bg-black bg-opacity-55 flex-shrink-0"
+                : "h-screen lg:w-60 md:w-48 bg-black bg-opacity-55 flex-shrink-0 overflow-hidden"
             }>  
             {
                 isMobile ? (
@@ -80,18 +81,20 @@ function VerticalBar({ onClose }: VerticalBarProps) {
     }
 
     return (
-        <div className="flex flex-col items-center p-2 gap-20 bg-transparent" style={{height: '100% !important', marginTop: '2rem'}}>
-            <Typography variant="h6">ExpensesApp</Typography>
+        <div className="flex flex-col items-center p-2 gap-20 bg-transparent" style={{height: '100vh', marginTop: '2rem'}}>
+            <div onClick={() => handleNavigation('/app')} style={{cursor: 'pointer'}} className="select-none">
+                <Typography variant="h6">{APPNAME}</Typography>
+            </div>
             <Stack 
                 spacing={2} 
                 divider={<Divider orientation="horizontal" flexItem />} 
                 sx={{width: '100%', padding: '1rem'}}
             >
-                <div onClick={() => handleNavigation('/login')} style={{cursor: 'pointer'}} className="select-none">
-                    <Typography>Início</Typography>
+                <div onClick={() => handleNavigation('/app')} style={{cursor: 'pointer'}} className="select-none">
+                    <Typography>Dashboard inicial</Typography>
                 </div>
                 <div onClick={() => handleNavigation('/app/expenses')} style={{cursor: 'pointer'}} className="select-none">
-                    <Typography>Minhas despesas</Typography>
+                    <Typography>Despesas</Typography>
                 </div>
                 <div onClick={() => handleMenuToggle(!openCat, "cat")} style={{cursor: 'pointer'}} className="select-none">
                     <Typography>Categorias</Typography>
@@ -123,7 +126,7 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                     : null
                 }
                 <div onClick={() => handleMenuToggle(!openDash, "dash")} style={{cursor: 'pointer'}} className="select-none">
-                    <Typography>Dashboards</Typography>
+                    <Typography>Análise de despesas</Typography>
                 </div>
                 {openDash ? 
                     <>

@@ -5,7 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { Roboto } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme';
-import { Box, Container, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import { PageProvider } from "./contexts/pageContext";
 
 const roboto = Roboto({
@@ -39,12 +39,17 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <PageProvider>
-              <Box className="h-screen w-screen bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950 "> 
+              <Box className="min-h-screen w-full bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950 overflow-scroll"
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  minHeight: '100vh',
+                  width: '100%'
+                }}> 
                 {children}
               </Box> 
             </PageProvider>           

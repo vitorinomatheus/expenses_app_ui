@@ -5,9 +5,10 @@ import AppButton from "@/app/components/buttons/appButton"
 import { useMediaQuery, Typography, TextField, Container, Box } from "@mui/material"
 import { useRouter } from 'next/navigation'
 import { usePageContext } from '@/app/contexts/pageContext'
+import { MOBILE_MEDIA_QUERY } from '@/app/appConstants'
 
 export default function User(prop: any) {
-    let isMobile = useMediaQuery('(max-width:770px)')
+    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY)
     const router = useRouter()
 
     const [editing, SetEditing] = React.useState(false);

@@ -1,11 +1,12 @@
 'use client'
 
+import { MOBILE_MEDIA_QUERY } from "@/app/appConstants";
 import AppButton from "@/app/components/buttons/appButton";
 import { useMediaQuery } from "@mui/material";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function Layout({children}: any) {
-    let isMobile = useMediaQuery('(max-width:770px)')
+    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY)
     const router = useRouter()
     const pathname = usePathname()
 

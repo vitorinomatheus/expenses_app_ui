@@ -1,14 +1,15 @@
 'use client'
 
-import AppDataGridProps from "@/app/types/componentsType/dataGridProps";
+import AppDataGridProps from "@/app/types/componentsProps/dataGridProps";
 import { DataGrid, GridValidRowModel } from "@mui/x-data-grid";
 import { useMediaQuery } from "@mui/material";
+import { MOBILE_MEDIA_QUERY } from "@/app/appConstants";
 
 
 
 export default function AppDataGrid<T extends GridValidRowModel>(props: AppDataGridProps<T>) {
     let datasource: T[] = props.datasource;
-    let isMobile = useMediaQuery('(max-width:770px)');
+    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
     let hiddenColumns = props.model.GetMobileHiddenColumns()
 
     return (

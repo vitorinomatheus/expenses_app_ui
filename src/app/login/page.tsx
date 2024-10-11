@@ -1,12 +1,13 @@
 'use client'
 
-import { TextField, Button, Link, Typography, Container } from "@mui/material"
+import { TextField, Typography, Container } from "@mui/material"
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AppButton from "../components/buttons/appButton";
+import { MOBILE_MEDIA_QUERY } from "../appConstants";
 
 
 export default function Login(props: any) {
-    let isMobile = useMediaQuery('(max-width:770px)');
+    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
 
     return (
         <Container className="min-h-screen min-w-full flex items-center">

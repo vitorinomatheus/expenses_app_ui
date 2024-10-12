@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, ReactNode, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import PageProviderProps from '../types/componentsProps/pageProviderProps';
 import PageContextType from '../types/componentsProps/pageContextType';
 

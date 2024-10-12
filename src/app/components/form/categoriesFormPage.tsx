@@ -1,16 +1,16 @@
 'use client'
 
-import { MOBILE_MEDIA_QUERY } from "@/app/appConstants";
 import AppButton from "@/app/components/buttons/appButton";
 import { usePageContext } from "@/app/contexts/pageContext";
 import CategoriesFormProps from "@/app/types/componentsProps/categoriesFormProps";
-import { Box, TextField, useMediaQuery } from "@mui/material";
+import useIsMobile from "@/app/utils/mediaQuery";
+import { Box, TextField } from "@mui/material";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function CategoryForm({ catName }: CategoriesFormProps) {
-    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY)
-    let pathname = usePathname()
+    const isMobile = useIsMobile()
+    const pathname = usePathname()
     const router = useRouter()
 
     const { setPageName } = usePageContext()

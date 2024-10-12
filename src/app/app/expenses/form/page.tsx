@@ -2,16 +2,13 @@
 
 import AppButton from "@/app/components/buttons/appButton";
 import { usePageContext } from "@/app/contexts/pageContext";
-import { Box, FormControl, InputLabel, MenuItem, Select, Stack, TextField, useMediaQuery } from "@mui/material";
+import { Box, FormControl, InputLabel, MenuItem, Select, Stack} from "@mui/material";
 import { useEffect } from "react";
-import Expense from '@/app/types/models/expenses';
-import { MOBILE_MEDIA_QUERY } from '@/app/appConstants';
 import AppValueInput from '@/app/components/valueInput/appValueInput';
-''
-export default function Form(props: any) {
-    let expense = new Expense(0, 0, 0, 0, 0, 0, 0, new Date(Date.now()), 0, 0)
+import useIsMobile from "@/app/utils/mediaQuery";
 
-    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY)
+export default function Form() {
+    const isMobile = useIsMobile()
 
     const { setPageName } = usePageContext()
 
@@ -21,7 +18,7 @@ export default function Form(props: any) {
         <>
             <Box className="flex flex-col" maxWidth="sm">
                 <Stack spacing={3}>
-                    <AppValueInput variant="filled" label="Valor" type="text" margin="normal" fullWidth/>
+                    <AppValueInput />
 
                     <FormControl>
                         <InputLabel id="tipo-gasto">Tipo de gasto</InputLabel>

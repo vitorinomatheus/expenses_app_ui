@@ -18,7 +18,7 @@ export default class Expense implements DataGridModel{
     ) { }
 
     GetMobileHiddenColumns(): GridColumnVisibilityModel {
-        let model = {
+        const model = {
             catBudgetImpact: false,
             catExpense: false,
             catSocial: false,

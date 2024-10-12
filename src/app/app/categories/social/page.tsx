@@ -5,14 +5,14 @@ import { usePageContext } from '@/app/contexts/pageContext';
 import CatSocial from '@/app/types/models/categories/catSocial';
 import { useEffect } from 'react';
 
-let social = new CatSocial('Sozinho', false)
+const social = new CatSocial('Sozinho', false)
 social.id = 1
 
-  let socials: CatSocial[] = [
+const socials: CatSocial[] = [
     social
   ];
 
-export default function ExpenseGrid(props: any) {
+export default function ExpenseGrid() {
   const { setPageName } = usePageContext()
 
   useEffect(() => { setPageName('SOCIAL') }, [setPageName])

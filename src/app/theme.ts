@@ -6,6 +6,11 @@ const violetMain = alpha(violetBase, 0.7);
 
 const theme = createTheme({
     components: {
+      MuiTypography: {
+        defaultProps: {
+          color: 'white'
+        }
+      },
         MuiDrawer: {
           styleOverrides: {
             paper: {
@@ -27,7 +32,7 @@ const theme = createTheme({
             dark: alpha(violetBase, 0.9),
             contrastText: getContrastRatio(violetMain, '#fff') > 4.5 ? '#fff' : '#111',
         },
-        white: {
+        secondary: {
             main: '#fff'
         }
     }

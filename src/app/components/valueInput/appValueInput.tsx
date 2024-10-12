@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { TextField } from '@mui/material';
 
-export default function AppValueInput(props: any) {
+export default function AppValueInput() {
   const [value, setValue] = useState('');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -30,19 +30,13 @@ export default function AppValueInput(props: any) {
 
   return (
     <TextField
-      {...props}
       value={value}
       onChange={handleChange}
       variant="filled"
       label="Valor"
       margin="normal"
       fullWidth
-      inputMode="numeric"
-      slotProps={{
-        inputProps: {
-          pattern: '[0-9]*'
-        }
-      }}
+      inputMode="numeric" 
     />
   );
 };

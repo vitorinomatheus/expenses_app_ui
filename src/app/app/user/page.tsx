@@ -1,22 +1,22 @@
 'use client'
 
-import * as React from 'react'
+import { useEffect, useState } from "react"
 import AppButton from "@/app/components/buttons/appButton"
-import { useMediaQuery, Typography, TextField, Container, Box } from "@mui/material"
+import { TextField, Box } from "@mui/material"
 import { useRouter } from 'next/navigation'
 import { usePageContext } from '@/app/contexts/pageContext'
-import { MOBILE_MEDIA_QUERY } from '@/app/appConstants'
+import useIsMobile from "@/app/utils/mediaQuery"
 
-export default function User(prop: any) {
-    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY)
+export default function User() {
+    const isMobile = useIsMobile()
     const router = useRouter()
 
-    const [editing, SetEditing] = React.useState(false);
+    const [editing, SetEditing] = useState(false);
     const handleEditingState = (toggle: boolean) => { SetEditing(toggle) }
 
     const { setPageName } = usePageContext()
 
-    React.useEffect(() => { setPageName('MEUS DADOS') }, [setPageName])
+    useEffect(() => { setPageName('MEUS DADOS') }, [setPageName])
 
     return(
 

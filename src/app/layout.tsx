@@ -1,30 +1,27 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { Roboto } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme';
 import { Box } from "@mui/material";
 import { PageProvider } from "./contexts/pageContext";
 
-const roboto = Roboto({
+// const roboto = Roboto({
+//   weight: ['300', '400', '500', '700'],
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-roboto',
+//   preload: false
+// })
+
+const inter = Inter({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto',
+  variable: '--font-inter',
+  preload: false
 })
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -39,20 +36,20 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}>
+        className={`${inter.variable} antialiased`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <PageProvider>
-              <Box className="min-h-screen w-full bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950 overflow-scroll"
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  minHeight: '100vh',
-                  width: '100%'
-                }}> 
-                {children}
-              </Box> 
-            </PageProvider>           
+              <Box className="min-h-screen w-full bg-gradient-to-b from-purple-950 via-gray-900 to-gray-950"
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: '100vh',
+                    width: '100%'
+                  }}> 
+                  {children}
+                </Box>   
+            </PageProvider>      
           </ThemeProvider>          
         </AppRouterCacheProvider>        
       </body>

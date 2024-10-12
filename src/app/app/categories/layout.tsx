@@ -1,16 +1,16 @@
 'use client'
 
-import { MOBILE_MEDIA_QUERY } from "@/app/appConstants";
 import AppButton from "@/app/components/buttons/appButton";
-import { useMediaQuery } from "@mui/material";
+import useIsMobile from "@/app/utils/mediaQuery";
 import { useRouter, usePathname } from "next/navigation";
+import { LayoutProps } from "../../../../.next/types/app/layout";
 
-export default function Layout({children}: any) {
-    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY)
+export default function Layout({children}: LayoutProps) {
+    const isMobile = useIsMobile()
     const router = useRouter()
     const pathname = usePathname()
 
-    let hideButton = pathname.includes('/form') 
+    const hideButton = pathname.includes('/form') 
 
     const handleClick = () => {
         router.push(`${pathname}/form`)

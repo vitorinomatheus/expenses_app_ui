@@ -5,14 +5,14 @@ import { usePageContext } from '@/app/contexts/pageContext';
 import CatExpenseType from '@/app/types/models/categories/catExpenseType';
 import { useEffect } from 'react';
 
-let type = new CatExpenseType('Mercado', false)
+const type = new CatExpenseType('Mercado', false)
 type.id = 1
 
-  let types: CatExpenseType[] = [
+const types: CatExpenseType[] = [
     type
   ];
 
-export default function ExpenseGrid(props: any) {
+export default function ExpenseGrid() {
   const { setPageName } = usePageContext()
 
   useEffect(() => { setPageName('TIPO DE DESPESA') }, [setPageName])

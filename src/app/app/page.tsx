@@ -3,12 +3,12 @@
 import { useEffect } from "react"
 import { usePageContext } from "../contexts/pageContext"
 import Grid from "@mui/material/Grid2"
-import { Button, Card, CardActions, CardContent, CardHeader, Typography } from "@mui/material"
+import { Card, CardContent, Typography } from "@mui/material"
 import { LineChart }  from '@mui/x-charts/LineChart'
 import { PieChart } from "@mui/x-charts/PieChart"
 import { BarChart } from "@mui/x-charts/BarChart"
 
-export default function MainPage(props: any) {
+export default function MainPage() {
     const { setPageName } = usePageContext()
     useEffect(() => { setPageName('DASHBOARD INICIAL') }, [setPageName])
     

@@ -1,4 +1,5 @@
 export default interface AppButtonProps{
     primary: boolean;
-    text: string
+    text: string;
+    onClick?: () => void
 }

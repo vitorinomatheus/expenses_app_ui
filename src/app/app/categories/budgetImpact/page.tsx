@@ -5,14 +5,14 @@ import { usePageContext } from '@/app/contexts/pageContext';
 import CatBudgetImpact from '@/app/types/models/categories/catBudgetImpact';
 import { useEffect } from 'react';
 
-let emotion = new CatBudgetImpact('Relaxado', false)
+const emotion = new CatBudgetImpact('Relaxado', false)
 emotion.id = 1
 
-  let emotions: CatBudgetImpact[] = [
+  const emotions: CatBudgetImpact[] = [
     emotion
   ];
 
-export default function ExpenseGrid(props: any) {
+export default function ExpenseGrid() {
   const { setPageName } = usePageContext()
 
   useEffect(() => { setPageName('IMPACTO') }, [setPageName])

@@ -11,7 +11,7 @@ export default class CategoriesBase implements DataGridModel {
     ) { }
 
     GetMobileHiddenColumns(): GridColumnVisibilityModel {
-        let model = {
+        const model = {
             custom: false,
             id: false
         } as GridColumnVisibilityModel

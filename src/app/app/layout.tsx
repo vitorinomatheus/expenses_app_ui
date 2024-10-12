@@ -1,13 +1,13 @@
 'use client'
 
-import { Box, Container, Paper, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import AppNavBar from "../components/navBar/appNavBar";
 import { LayoutProps } from "../../../.next/types/app/layout";
 import { usePageContext } from "../contexts/pageContext";
-import { MOBILE_MEDIA_QUERY } from "../appConstants";
+import useIsMobile from "../utils/mediaQuery";
 
 export default function Layout({children}: LayoutProps) {
-    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
+    const isMobile = useIsMobile()
     const { pageName } = usePageContext()
     
     return (
@@ -20,12 +20,13 @@ export default function Layout({children}: LayoutProps) {
                 sx={{
                     height: '100vh',
                     width: '100%',
+                    paddingBottom: '2rem'
                 }}
             >
                 <Container sx={{ pt: 3 }}>
                 {!isMobile && <Typography variant="h4" sx={{ mb: 3}}>{pageName}</Typography>}
-                <Box className="h-full">
-                    {children}
+                <Box className="h-full"> 
+                        {children}                   
                 </Box>
                 </Container>
             </Box>

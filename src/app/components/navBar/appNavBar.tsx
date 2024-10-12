@@ -1,26 +1,26 @@
 'use client'
 
-import { Box, Divider, Drawer, Fab, Icon, Stack, Typography } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { Box, Divider, Drawer, Fab, Stack, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu"
 import * as React from 'react';
 import { usePathname, useRouter } from "next/navigation";
 import VerticalBarProps from "@/app/types/componentsProps/verticalBarProps";
 import { usePageContext } from "@/app/contexts/pageContext";
 import AddIcon from '@mui/icons-material/Add'
-import { APPNAME, MOBILE_MEDIA_QUERY } from "@/app/appConstants";
-import { AccountCircle, Analytics, ArrowDropDown, ArrowDropUp, BarChart, CurrencyExchange, EmojiEmotions, Groups, LocalAtmRounded, Logout, PieChart, PriceChange, ProductionQuantityLimits, QueryStats, ShowChart, TableView } from "@mui/icons-material";
+import { APP_VERSION, APPNAME } from "@/app/appConstants";
+import { AccountCircle, ArrowDropDown, ArrowDropUp, BarChart, CurrencyExchange, EmojiEmotions, Groups, LocalAtmRounded, Logout, PieChart, PriceChange, ProductionQuantityLimits, QueryStats, ShowChart, TableView } from "@mui/icons-material";
+import useIsMobile from "@/app/utils/mediaQuery";
 
-export default function AppNavBar(props: any) {
-    let isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
+export default function AppNavBar() {
+    const isMobile = useIsMobile()
     const [open, setOpen] = React.useState(false);    
     const handleDrawerClose = () => { setOpen(false); };    
     const handleDrawerOpen = () => { setOpen(true); };
     const { pageName } = usePageContext();
-    let pathname = usePathname();
+    const pathname = usePathname();
     const router = useRouter();
 
-    let hideAddButton = pathname.includes('/form') 
+    const hideAddButton = pathname.includes('/form') 
 
     const handleClick = () => {
         router.push(`${pathname}/form`)
@@ -77,14 +77,19 @@ function VerticalBar({ onClose }: VerticalBarProps) {
     const [openCat, setOpenCat] = React.useState(false);    
     const [openDash, setOpenDash] = React.useState(false);   
 
-    const handleMenuToggle = (toggle: boolean, menu: 'cat' | 'dash' ) => {
-        menu == 'cat' ? setOpenCat(toggle) : setOpenDash(toggle)
-    }
+    const handleMenuToggle = (toggle: boolean, menu: 'cat' | 'dash') => {
+        if (menu === 'cat') {
+          setOpenCat(toggle);
+        } else {
+          setOpenDash(toggle);
+        }
+      }
 
     return (
         <div className="flex flex-col items-center p-2 gap-20 bg-transparent" style={{height: '100vh', marginTop: '2rem'}}>
-            <div onClick={() => handleNavigation('/app')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+            <div onClick={() => handleNavigation('/app')} style={{cursor: 'pointer', display: 'flex', flexDirection: 'column'}} className="select-none">
                 <Typography variant="h6">{APPNAME}</Typography>
+                <Typography sx={{alignSelf: 'center'}}>{APP_VERSION}</Typography>
             </div>
             <Stack 
                 spacing={2} 
@@ -92,13 +97,14 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                 sx={{width: '100%', padding: '1rem'}}
             >
                 <div onClick={() => handleNavigation('/app')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                    <BarChart /><Typography>Dashboard inicial</Typography>
+                    <BarChart color="white" /><Typography>Dashboard inicial</Typography>
                 </div>
                 <div onClick={() => handleNavigation('/app/expenses')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                    <LocalAtmRounded /><Typography>Despesas</Typography>
+                    <LocalAtmRounded color="white" /><Typography>Despesas</Typography>
                 </div>
                 <div onClick={() => handleMenuToggle(!openCat, "cat")} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                    <div><TableView />{!openCat ? <ArrowDropDown /> : <ArrowDropUp />}</div><Typography>Categorias</Typography>
+                    <div><TableView color="white" />{!openCat ? <ArrowDropDown color="white" /> : <ArrowDropUp color="white" />}</div>
+                    <Typography>Categorias</Typography>
                 </div>
                 {openCat ? 
                     <>
@@ -107,19 +113,19 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                                 spacing={1}
                                 divider={<Divider orientation="horizontal" flexItem />} >
                                 <div onClick={() => handleNavigation('/app/categories/budgetImpact')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                                    <PriceChange /><Typography>Impacto</Typography>
+                                    <PriceChange color="white" /><Typography>Impacto</Typography>
                                 </div>
                                 <div onClick={() => handleNavigation('/app/categories/emotional')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                                    <EmojiEmotions /><Typography>Emoção</Typography>
+                                    <EmojiEmotions color="white" /><Typography>Emoção</Typography>
                                 </div>
                                 <div onClick={() => handleNavigation('/app/categories/expenseFeel')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                                    <ProductionQuantityLimits /><Typography>Relação</Typography>
+                                    <ProductionQuantityLimits color="white" /><Typography>Relação</Typography>
                                 </div>
                                 <div onClick={() => handleNavigation('/app/categories/expenseType')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                                    <CurrencyExchange /><Typography>Tipo de despesa</Typography>
+                                    <CurrencyExchange color="white" /><Typography>Tipo de despesa</Typography>
                                 </div>
                                 <div onClick={() => handleNavigation('/app/categories/social')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                                    <Groups/><Typography>Social</Typography>
+                                    <Groups color="white"/><Typography>Social</Typography>
                                 </div>
                             </Stack>
                         </div>
@@ -127,7 +133,8 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                     : null
                 }
                 <div onClick={() => handleMenuToggle(!openDash, "dash")} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                    <div><ShowChart />{!openDash ? <ArrowDropDown /> : <ArrowDropUp />}</div><Typography>Análise</Typography>
+                    <div><ShowChart color="white" />{!openDash ? <ArrowDropDown color="white" /> : <ArrowDropUp color="white"/>}</div>
+                        <Typography>Análise</Typography>
                 </div>
                 {openDash ? 
                     <>
@@ -136,10 +143,10 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                                 spacing={1}
                                 divider={<Divider orientation="horizontal" flexItem />} >
                                 <div onClick={() => handleNavigation('/login')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                                    <PieChart /><Typography>Médias</Typography>
+                                    <PieChart color="white" /><Typography>Médias</Typography>
                                 </div>
                                 <div onClick={() => handleNavigation('/login')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                                    <QueryStats /><Typography>Relações</Typography>
+                                    <QueryStats color="white" /><Typography>Relações</Typography>
                                 </div>
                             </Stack>
                         </div>
@@ -147,10 +154,10 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                     : null
                 }
                 <div onClick={() => handleNavigation('/app/user')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                    <AccountCircle /> <Typography>Minha conta</Typography> 
+                    <AccountCircle color="white" /> <Typography>Minha conta</Typography> 
                 </div> 
                 <div onClick={() => handleNavigation('/login')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
-                    <Logout /> <Typography>Logout</Typography> 
+                    <Logout color="white" /> <Typography>Logout</Typography> 
                 </div>                  
             </Stack>
         </div>

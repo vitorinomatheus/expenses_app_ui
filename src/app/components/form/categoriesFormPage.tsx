@@ -2,8 +2,8 @@
 
 import AppButton from "@/app/components/buttons/appButton";
 import { usePageContext } from "@/app/contexts/pageContext";
-import CategoriesFormProps from "@/app/types/componentsProps/categoriesFormProps";
-import useIsMobile from "@/app/utils/mediaQuery";
+import CategoriesFormProps from "@/types/componentsProps/categoriesFormProps";
+import useIsMobile from "@/hooks/useIsMobile";
 import { Box, TextField } from "@mui/material";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";

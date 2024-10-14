@@ -4,12 +4,12 @@ import { Box, Divider, Drawer, Fab, Stack, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu"
 import * as React from 'react';
 import { usePathname, useRouter } from "next/navigation";
-import VerticalBarProps from "@/app/types/componentsProps/verticalBarProps";
+import VerticalBarProps from "@/types/componentsProps/verticalBarProps";
 import { usePageContext } from "@/app/contexts/pageContext";
 import AddIcon from '@mui/icons-material/Add'
 import { APP_VERSION, APPNAME } from "@/app/appConstants";
 import { AccountCircle, ArrowDropDown, ArrowDropUp, BarChart, CurrencyExchange, EmojiEmotions, Groups, LocalAtmRounded, Logout, PieChart, PriceChange, ProductionQuantityLimits, QueryStats, ShowChart, TableView } from "@mui/icons-material";
-import useIsMobile from "@/app/utils/mediaQuery";
+import useIsMobile from "@/hooks/useIsMobile";
 
 export default function AppNavBar() {
     const isMobile = useIsMobile()
@@ -87,7 +87,7 @@ function VerticalBar({ onClose }: VerticalBarProps) {
 
     return (
         <div className="flex flex-col items-center p-2 gap-20 bg-transparent" style={{height: '100vh', marginTop: '2rem'}}>
-            <div onClick={() => handleNavigation('/app')} style={{cursor: 'pointer', display: 'flex', flexDirection: 'column'}} className="select-none">
+            <div onClick={() => handleNavigation('/home')} style={{cursor: 'pointer', display: 'flex', flexDirection: 'column'}} className="select-none">
                 <Typography variant="h6">{APPNAME}</Typography>
                 <Typography sx={{alignSelf: 'center'}}>{APP_VERSION}</Typography>
             </div>
@@ -96,10 +96,10 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                 divider={<Divider orientation="horizontal" flexItem />} 
                 sx={{width: '100%', padding: '1rem'}}
             >
-                <div onClick={() => handleNavigation('/app')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                <div onClick={() => handleNavigation('/home')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                     <BarChart color="white" /><Typography>Dashboard inicial</Typography>
                 </div>
-                <div onClick={() => handleNavigation('/app/expenses')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                <div onClick={() => handleNavigation('/expenses')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                     <LocalAtmRounded color="white" /><Typography>Despesas</Typography>
                 </div>
                 <div onClick={() => handleMenuToggle(!openCat, "cat")} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
@@ -112,19 +112,19 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                             <Stack 
                                 spacing={1}
                                 divider={<Divider orientation="horizontal" flexItem />} >
-                                <div onClick={() => handleNavigation('/app/categories/budgetImpact')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                                <div onClick={() => handleNavigation('/categories/budgetImpact')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                                     <PriceChange color="white" /><Typography>Impacto</Typography>
                                 </div>
-                                <div onClick={() => handleNavigation('/app/categories/emotional')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                                <div onClick={() => handleNavigation('/categories/emotional')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                                     <EmojiEmotions color="white" /><Typography>Emoção</Typography>
                                 </div>
-                                <div onClick={() => handleNavigation('/app/categories/expenseFeel')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                                <div onClick={() => handleNavigation('/categories/expenseFeel')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                                     <ProductionQuantityLimits color="white" /><Typography>Relação</Typography>
                                 </div>
-                                <div onClick={() => handleNavigation('/app/categories/expenseType')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                                <div onClick={() => handleNavigation('/categories/expenseType')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                                     <CurrencyExchange color="white" /><Typography>Tipo de despesa</Typography>
                                 </div>
-                                <div onClick={() => handleNavigation('/app/categories/social')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                                <div onClick={() => handleNavigation('/categories/social')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                                     <Groups color="white"/><Typography>Social</Typography>
                                 </div>
                             </Stack>
@@ -153,7 +153,7 @@ function VerticalBar({ onClose }: VerticalBarProps) {
                     </>                
                     : null
                 }
-                <div onClick={() => handleNavigation('/app/user')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
+                <div onClick={() => handleNavigation('/user')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">
                     <AccountCircle color="white" /> <Typography>Minha conta</Typography> 
                 </div> 
                 <div onClick={() => handleNavigation('/login')} style={{cursor: 'pointer', display: 'flex', gap: '1rem'}} className="select-none">

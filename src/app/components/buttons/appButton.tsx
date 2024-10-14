@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import AppButtonProps from "@/app/types/componentsProps/buttonProps";
+import AppButtonProps from "@/types/componentsProps/buttonProps";
 
 export default function AppButton(props: AppButtonProps) {
 

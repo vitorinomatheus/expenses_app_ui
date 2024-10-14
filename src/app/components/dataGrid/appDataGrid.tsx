@@ -1,10 +1,8 @@
 'use client'
 
-import AppDataGridProps from "@/app/types/componentsProps/dataGridProps";
+import AppDataGridProps from "@/types/componentsProps/dataGridProps";
 import { DataGrid, GridValidRowModel } from "@mui/x-data-grid";
-import useIsMobile from "@/app/utils/mediaQuery";
-
-
+import useIsMobile from "@/hooks/useIsMobile";
 
 export default function AppDataGrid<T extends GridValidRowModel>(props: AppDataGridProps<T>) {
     const datasource: T[] = props.datasource;

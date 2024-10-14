@@ -1,8 +1,8 @@
 'use client'
 
 import { createContext, useContext, useState } from 'react';
-import PageProviderProps from '../types/componentsProps/pageProviderProps';
-import PageContextType from '../types/componentsProps/pageContextType';
+import PageProviderProps from '../../types/componentsProps/pageProviderProps';
+import PageContextType from '../../types/componentsProps/pageContextType';
 
 const PageContext = createContext<PageContextType | undefined>(undefined);
 
